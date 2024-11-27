@@ -78,48 +78,40 @@
 //     }
 // }
 
-function check(){
-    event.preventDefault()
-    const password = document.getElementById("password").value.trim()
-    const confirmPassword = document.getElementById("confirmPassword").value.trim()
+function check(event){
+    event.preventDefault(); // Prevent form submission to handle validation first
 
-    // console.log(password)
-    // console.log(confirmPassword)
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
 
-    minChar = 12
+    const minChar = 12;
     const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-
-    if (password.length < 12 ) {
-        console.log("must be minimum of 12 characters")
-        return;
-        
-    }
-    if(password != confirmPassword){
-        console.log("password do not match");
-        return;
+    // Validate password length
+    if (password.length < minChar) {
+        console.log("Password must be a minimum of 12 characters.");
+        return false; // Prevent form submission
     }
 
-    const valid = checkR(strongPasswordRegex, password)
-    if(valid){
-        console.log("passwor is valid")
-        console.log(password)
-        console.log(confirmPassword)
-
-    }
-    else{
-        console.log("invalid password")
+    // Validate if passwords match
+    if (password !== confirmPassword) {
+        console.log("Passwords do not match.");
+        return false; // Prevent form submission
     }
 
-    
+    // Validate strong password using regex
+    const valid = checkR(strongPasswordRegex, password);
+    if (valid) {
+        console.log("Password is valid.");
+        event.target.submit();  // Manually trigger form submission
+
+        return true; // This will trigger form submission
+    } else {
+        console.log("Password is not strong enough.");
+        return false; // Prevent form submission
+    }
 }
 
 function checkR(strongPasswordRegex, password){
-    const result = strongPasswordRegex.test(password)
-
-    if(result){
-        return true
-    }else{
-        return false
-    }
+    return strongPasswordRegex.test(password); // Return true if the password matches the regex
 }
