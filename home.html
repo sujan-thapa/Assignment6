@@ -5,82 +5,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Website</title>
-    <link rel="stylesheet" href="./styles/home.css">
+    <link rel="stylesheet" href="home.css">
 </head>
 
 <body>
     <div class="container">
-        <form action="">
+        <form id="customerForm" action="" method="post">
+            <label for="contactForm">Customers Contact Form</label>
+            
+            <!-- Name Section -->
             <div class="name">
-                <label for="contactForm">Customers Contact Form</label>
                 <label for="lastName">Last Name:</label>
-                <input type="text" placeholder="Enter your last name">
+                <input type="text" id="lastName" placeholder="Enter your last name" required>
 
                 <label for="firstName">First Name:</label>
-                <input type="text" placeholder="Enter your first name">
-
+                <input type="text" id="firstName" placeholder="Enter your first name" required>
             </div>
+
+            <!-- dob section -->
+             <div class="dob">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" placeholder="Enter your date of birth" required>
+             </div>
+            
+            <!-- Gender Section -->
+            <label for="gender">Gender Type</label>
             <div class="gender">
-
-                <label for="gender">Gender Type</label>
-                <input type="radio" id="huey" name="drone" value="huey" checked />
-                <label for="huey">Huey</label>
-
-
-
-                <input type="radio" id="dewey" name="drone" value="dewey" />
-                <label for="dewey">Dewey</label>
+                <div class="radio-item">
+                    <input type="radio" id="male" name="gender" value="Male" />
+                    <label for="male">Male</label>
+                </div>
+                <div class="radio-item">
+                    <input type="radio" id="female" name="gender" value="Female" />
+                    <label for="female">Female</label>
+                </div>
             </div>
 
-
-            <div class="contactDetails">
-
+            <!-- Phone Number Section -->
+            <div id="phoneNumber">
                 <label for="phone">Customer Phone #:</label>
-                <input type="number" placeholder="Enter Customer Phone #">
-                <label for="email">Email Address:</label>
-                <input type="text" placeholder="Enter your email address">
+                <input type="text" id="phone" placeholder="Enter Customer Phone #">
+            </div>
 
+            <!-- Email Section -->
+            <div id="emailAddress">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" placeholder="Enter your email address" autocomplete="username">
+            </div>
+
+            <!-- Address Section -->
+            <div id="houseAddress">
                 <label for="address">Home Address:</label>
-                <input type="text" placeholder="Address">
-                <input type="number" placeholder="House Number">
-                <!-- <label for="firstName">First Name:</label> -->
-                <select name="pets" id="pet-select">
-                    <option value="">--Please choose an option--</option>
-                    <option value="dog">Dog</option>
-                    <option value="cat">Cat</option>
-                    <option value="hamster">Hamster</option>
-                    <option value="parrot">Parrot</option>
-                    <option value="spider">Spider</option>
-                    <option value="goldfish">Goldfish</option>
+                <input type="text" id="address" placeholder="Enter your address">
+                <input type="number" id="houseNumber" placeholder="House Number">
+                <select name="province" id="province-select">
+                    <option value="">--Please choose Province--</option>
+                    <option value="ontario">Ontario</option>
+                    <option value="bc">British Columbia</option>
+                    <option value="nova-scotia">Nova Scotia</option>
+                    <option value="new-brunswick">New Brunswick</option>
+                    <option value="alberta">Alberta</option>
+                    <option value="quebec">Quebec</option>
                 </select>
             </div>
 
+            <!-- Password Section -->
             <div class="password">
-                <label for="password">Please enter complex password (8 digits include characters, symbols,
-                    integers):</label>
-                <input type="password" placeholder="Enter your password">
-                <input type="password" placeholder="Confirm your password">
-
+                <label for="password">Please enter a complex password (8 digits including characters, symbols, and integers):</label>
+                <input type="password" id="password" placeholder="Enter your password" autocomplete="new-password">
+                <input type="password" id="confirmPassword" placeholder="Confirm your password" autocomplete="new-password">
             </div>
 
+            
+            <!-- Subscription Section -->
             <div class="subscription">
-                <input type="checkbox" id="scales" name="scales" checked />
-                <label for="scales">Send me monthly newsletter</label>
+                <input type="checkbox" id="subscription" name="subscription" checked />
+                <label for="subscription">Send me the monthly newsletter</label>
             </div>
 
-            <!-- for question -->
+            <!-- Questions Section -->
             <div class="questions">
                 <label for="question">What is your question?</label>
                 <textarea name="question" id="question"></textarea>
-
             </div>
 
+            <!-- Submit and Reset Buttons -->
             <div class="submit">
-                <button type="submit">Submit</button>
+                <button onclick="check(event)" type="submit">Submit</button>
                 <button type="reset">Reset</button>
             </div>
         </form>
     </div>
+
+    <script src="./scripts/errorhandling.js"></script>
+    <script src="./scripts/validation.js"></script>
+    
+   
 </body>
 
 </html>
