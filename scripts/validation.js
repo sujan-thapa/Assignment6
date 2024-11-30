@@ -37,6 +37,13 @@ function nameGender() {
 function emailValidation() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const email = document.getElementById("email").value.trim();
+    const emailError = document.getElementById("emailError");
+
+    if (!emailRegex.test(email)) {
+
+        emailError.textContent = "Your email address is not in correct format.";
+        
+    }
 
     return emailRegex.test(email);
 }
@@ -44,7 +51,14 @@ function emailValidation() {
 function phoneValidation() {
     const phoneNumber = document.getElementById("phone").value.trim();
     const phoneRegex = /^\(?(\d{3})\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+    const phoneError = document.getElementById("phoneError");
 
+    if (!phoneRegex.test(phoneNumber)) {
+        phoneError.textContent = "Your phone number is not in correct format.";
+
+
+        
+    }
     return phoneRegex.test(phoneNumber);
 }
 
@@ -73,19 +87,28 @@ function check(event) {
     const confirmPassword = document.getElementById("confirmPassword").value.trim();
     const minChar = 12;
     const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const passwordError = document.getElementById("passwordError")
 
     if (password.length < minChar) {
-        console.log("Password must be a minimum of 12 characters.");
+        // console.log("Password must be a minimum of 12 characters.");
+        passwordError.textContent = "Password must be a minimum of 12 characters.";
+
         validity = false;
     }
 
     if (password !== confirmPassword) {
-        console.log("Passwords do not match.");
+        // console.log("Passwords do not match.");
+        passwordError.textContent = "Passwords do not match.";
+
+
         validity = false;
     }
 
     if (!strongPasswordRegex.test(password)) {
         console.log("Password is not strong enough.");
+        passwordError.textContent = "Password is not strong enough.";
+        
+
         validity = false;
     }
 
