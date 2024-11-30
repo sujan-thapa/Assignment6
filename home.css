@@ -41,6 +41,15 @@ input:focus{
     gap: 10px;
 }
 
+.error{
+        color: red;
+        font-size: 0.9em;
+        display: block; /* Ensures the error spans are visible */
+        margin-top: 5px;
+
+    
+}
+
 .gender {
     display: flex; 
     gap: 10px; 

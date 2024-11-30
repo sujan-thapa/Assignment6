@@ -66,7 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Execute the query
     if (mysqli_stmt_execute($stmt)) {
-        echo "Data inserted successfully!";
+        // echo "Data inserted successfully!";
+        
+        header("Location: ../home.html");
     } else {
         echo "Error: " . mysqli_stmt_error($stmt);
     }
